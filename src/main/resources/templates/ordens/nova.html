@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nova Ordem de Serviço</title>
+</head>
+<body>
+    <h1>Nova Ordem de Serviço</h1>
+    <form th:action="@{/ordens}" th:object="${ordem}" method="post">
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" th:field="*{cliente}" required>
+        <br>
+        <label for="veiculo">Veículo:</label>
+        <input type="text" id="veiculo" name="veiculo" th:field="*{veiculo}" required>
+        <br>
+        <label for="descricao">Descrição do Problema:</label>
+        <textarea id="descricao" name="descricao" th:field="*{descricao}" required></textarea>
+        <br>
+        <button type="submit">Salvar</button>
+    </form>
+    <a th:href="@{/ordens}">Voltar</a>
+</body>
+</html>

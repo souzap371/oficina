@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard - Oficina Mecânica</title>
+</head>
+<body>
+    <h1>Bem-vindo à Oficina Mecânica</h1>
+    <ul>
+        <li><a th:href="@{/ordens}">Gestão de Ordens de Serviço</a></li>
+        <li><a th:href="@{/clientes}">Cadastro e Gestão de Clientes</a></li>
+        <li><a th:href="@{/financeiro}">Gestão Financeira</a></li>
+        <li><a th:href="@{/estoque}">Estoque de Peças e Materiais</a></li>
+        <li><a th:href="@{/agenda}">Agendamento de Serviços</a></li>
+        <li><a th:href="@{/relatorios}">Relatórios e Estatísticas</a></li>
+        <li><a th:href="@{/equipe}">Gerenciamento da Equipe</a></li>
+    </ul>
+</body>
+</html>
