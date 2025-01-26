@@ -1,0 +1,37 @@
+name: CI/CD - Build, Test and Deploy
+
+on:
+  push:
+    branches:
+      - main   # A branch principal para o qual você faz o push
+
+jobs:
+  build:
+    runs-on: Fedora-latest
+    
+    steps:
+    # Checkout do código do repositório
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    # Configuração do Java 21
+    - name: Set up JDK 21
+      uses: actions/setup-java@v2
+      with:
+        java-version: '21'
+
+    # Baixar dependências e rodar testes
+    - name: Build with Maven
+      run: mvn clean install
+
+    # Rodar os testes do projeto
+    - name: Run tests
+      run: mvn test
+
+    # Deploy (substituir pelo seu script de deploy)
+    - name: Deploy to Production
+      run: |
+        scp target/myapp.war ${{ secrets.DEPLOY_USER }}@$${{ secrets.SERVER_IP }}:/path/to/tomcat/webapps/
+        ssh ${{ secrets.DEPLOY_USER }}@$${{ secrets.SERVER_IP }} "sudo systemctl restart tomcat"  # ou outro comando para reiniciar o Tomcat
+      env:
+        DEPLOY_PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
