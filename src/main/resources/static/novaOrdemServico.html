@@ -1,0 +1,154 @@
+<!-- <!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Nova Ordem de Serviço</title>
+</head>
+<body>
+    <h1>Criar Nova Ordem de Serviço</h1>
+    <form action="/ordens-de-servico/salvar" method="post">
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" required>
+        <br>
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" required>
+        <br>
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status" required>
+        <br>
+        <button type="submit">Salvar</button>
+        <button type="button" onclick="window.location.href='/ordens-de-servico'">Cancelar</button>
+    </form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Nova Ordem de Serviço</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"]:focus, select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .btn-submit {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        .btn-cancel {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-cancel:hover {
+            background-color: #c82333;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Souza Auto Peças e Serviços - Ordem de Serviço</h1>
+    </header>
+
+    <div class="container">
+        <h2>Criar Nova Ordem de Serviço</h2>
+        <form action="/ordens-de-servico/salvar" method="post">
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" required>
+
+            <label for="cliente">Selecione o Cliente:</label>
+            <select id="cliente" name="clienteId" required>
+                <option value="">Selecione...</option>
+                <option value="1">Cliente 1 - Pablo</option>
+                <option value="2">Cliente 2 - João</option>
+                <option value="3">Cliente 3 - Maria</option>
+                <!-- Exemplo de opções, você pode popular com os clientes do banco -->
+            </select>
+
+            <label for="status">Status:</label>
+            <input type="text" id="status" name="status" required>
+
+            <div style="display: flex; justify-content: space-between;">
+                <button type="submit" class="btn-submit">Salvar</button>
+                <button type="button" class="btn-cancel" onclick="window.location.href='/ordens-de-servico'">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; Souza Auto Pecas e Servicos 2024. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

@@ -15,6 +15,10 @@ public class OrdemDeServico {
     private String descricao;
     private Double valorTotal;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente; // Este campo já representa o relacionamento
+
     @OneToMany(mappedBy = "ordemDeServico", cascade = CascadeType.ALL)
     private List<Orcamento> orcamentos;
 
@@ -23,10 +27,11 @@ public class OrdemDeServico {
     }
 
     // Construtor parametrizado
-    public OrdemDeServico(LocalDate dataCriacao, String descricao, Double valorTotal) {
+    public OrdemDeServico(LocalDate dataCriacao, String descricao, Double valorTotal, Cliente cliente) {
         this.dataCriacao = dataCriacao;
         this.descricao = descricao;
         this.valorTotal = valorTotal;
+        this.cliente = cliente;
     }
 
     // Getters e Setters
@@ -60,6 +65,14 @@ public class OrdemDeServico {
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public List<Orcamento> getOrcamentos() {

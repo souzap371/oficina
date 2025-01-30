@@ -60,12 +60,24 @@ public String listarClientes(Model model) {
     }
 
     // Formulário para editar um cliente existente
+    // @GetMapping("/editar/{id}")
+    // public String editarCliente(@PathVariable Long id, Model model) {
+    //     Cliente cliente = clienteService.buscarPorId(id);
+    //     model.addAttribute("cliente", cliente);
+    //     return "clientes/editar";
+    // }
     @GetMapping("/editar/{id}")
     public String editarCliente(@PathVariable Long id, Model model) {
         Cliente cliente = clienteService.buscarPorId(id);
+        
+        if (cliente == null) {
+            return "redirect:/clientes"; // Evita erro se o cliente não for encontrado
+        }
+
         model.addAttribute("cliente", cliente);
-        return "clientes/editar";
+        return "editarCliente";
     }
+
 
     // Atualizar um cliente
     @PostMapping("/editar")

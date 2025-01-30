@@ -8,41 +8,35 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class OrdemDeServicoService {
 
-    @Autowired
-    private OrdemDeServicoRepository ordemRepository;
+    //@Autowired
+    // private OrdemDeServicoRepository ordemDeServicoRepository;
+    private final OrdemDeServicoRepository ordemDeServicoRepository;
 
-    // Listar todas as ordens de serviço
-    public List<OrdemDeServico> listarTodas() {
-        return ordemRepository.findAll();
+    public OrdemDeServicoService(OrdemDeServicoRepository ordemDeServicoRepository) {
+        this.ordemDeServicoRepository = ordemDeServicoRepository;
     }
 
-    // Salvar uma nova ordem de serviço
-    public OrdemDeServico salvar(OrdemDeServico ordem) {
-        return ordemRepository.save(ordem);
+    public List<OrdemDeServico> listarOrdensServico() {
+        return ordemDeServicoRepository.findAll();
     }
 
-    // Buscar uma ordem de serviço por ID
-    public OrdemDeServico buscarPorId(Long id) {
-        Optional<OrdemDeServico> ordem = ordemRepository.findById(id);
-        return ordem.orElseThrow(() -> new RuntimeException("Ordem de Serviço não encontrada!"));
+    public Optional<OrdemDeServico> buscarPorId(Long id) {
+        return ordemDeServicoRepository.findById(id);
     }
 
-    // Atualizar uma ordem de serviço existente
-    public OrdemDeServico atualizar(OrdemDeServico ordem) {
-        if (ordem.getId() == null || !ordemRepository.existsById(ordem.getId())) {
-            throw new RuntimeException("Ordem de Serviço não encontrada para atualização!");
+    public OrdemDeServico salvarOrdemDeServico(OrdemDeServico ordemDeServico) {
+        if (ordemDeServico == null || ordemDeServico.getDescricao() == null || ordemDeServico.getDescricao().isEmpty()) {
+            throw new IllegalArgumentException("Descrição da ordem de serviço não pode ser vazia");
         }
-        return ordemRepository.save(ordem);
+        return ordemDeServicoRepository.save(ordemDeServico);
     }
+    
 
-    // Deletar uma ordem de serviço por ID
-    public void deletar(Long id) {
-        if (!ordemRepository.existsById(id)) {
-            throw new RuntimeException("Ordem de Serviço não encontrada para exclusão!");
-        }
-        ordemRepository.deleteById(id);
+    public void excluirOrdemDeServico(Long id) {
+        ordemDeServicoRepository.deleteById(id);
     }
 }
