@@ -1,40 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordens de Serviço</title>
-</head>
-<body>
-    <h1>Lista de Ordens de Serviço</h1>
-    <a href="/ordens-de-servico/nova">Criar Nova Ordem de Serviço</a>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Cliente</th>
-                <th>Descrição</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="ordemServico : ${ordensServico}">
-                <td th:text="${ordemServico.id}"></td>
-                <td th:text="${ordemServico.cliente}"></td>
-                <td th:text="${ordemServico.descricao}"></td>
-                <td th:text="${ordemServico.status}"></td>
-                <td>
-                    <a th:href="@{/ordens-de-servico/editar/{id}(id=${ordemServico.id})}">Editar</a>
-                    <a th:href="@{/ordens-de-servico/excluir/{id}(id=${ordemServico.id})}">Excluir</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -141,6 +104,7 @@
                     <th>Cliente</th>
                     <th>Descrição</th>
                     <th>Status</th>
+                    <th>Valor Total</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -150,6 +114,7 @@
                     <td th:text="${ordemServico.cliente}"></td>
                     <td th:text="${ordemServico.descricao}"></td>
                     <td th:text="${ordemServico.status}"></td>
+                    <td th:text="${#numbers.formatDecimal(ordemServico.valorTotal, 1, 2)}"></td>
                     <td>
                         <a th:href="@{/ordens-de-servico/editar/{id}(id=${ordemServico.id})}">Editar</a>
                         <a th:href="@{/ordens-de-servico/excluir/{id}(id=${ordemServico.id})}">Excluir</a>
@@ -160,7 +125,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Souza Auto Pecas e Servicos. Todos os direitos reservados.</p>
+        <p>&copy; 2023 TS TECNOLOGIA. Todos os direitos reservados.</p>
     </footer>
 
 </body>
