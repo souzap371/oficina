@@ -142,19 +142,11 @@
     <script>
         function confirmarCancelamento() {
             if (confirm('Tem certeza que deseja cancelar?')) {
-                window.location.href = '/ordens-de-servico';
+                window.location.href = '/ordens-de-servico/listar';
             }
         }
-
-        // function formatarMoeda(input) {
-        //     let valor = input.value.replace(/\D/g, ''); // Remove tudo o que não for número
-        //     if (valor.length > 2) {
-        //         valor = valor.replace(/(\d)(\d{2})$/, '$1,$2'); // Adiciona vírgula para separar os centavos
-        //         valor = valor.replace(/(?=(\d{3})+(\D))\B/g, '.'); // Adiciona ponto para separar os milhar
-        //     }
-        //     input.value = valor ? 'R$ ' + valor : ''; // Formata como moeda brasileira
-        // }
     </script>
+    
 
 </body>
 </html>

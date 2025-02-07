@@ -1,25 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Ordem de Serviço</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Ordem de Serviço</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    form {
+      margin-top: 20px;
+    }
+    form div {
+      margin-bottom: 15px;
+    }
+    label {
+      display: inline-block;
+      width: 120px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    select {
+      width: calc(100% - 130px);
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .btn-submit {
+      background-color: #28a745;
+      color: white;
+    }
+    .btn-cancel {
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-    <h1>Editar Ordem de Serviço</h1>
+  <header>
+    <h1>Souza Auto Peças e Serviços</h1>
+  </header>
+
+  <div class="container">
+    <h2>Editar Ordem de Serviço</h2>
     <form action="/ordens-de-servico/atualizar" method="post">
-        <input type="hidden" name="id" th:value="${ordemServico.id}">
+      <!-- Campo oculto com o ID da ordem -->
+      <input type="hidden" name="id" th:value="${ordemDeServico.id}">
+      
+      <div>
         <label for="descricao">Descrição:</label>
-        <input type="text" id="descricao" name="descricao" th:value="${ordemServico.descricao}" required>
-        <br>
-        <label for="cliente">Cliente:</label>
-        <input type="text" id="cliente" name="cliente" th:value="${ordemServico.cliente}" required>
-        <br>
-        <label for="status">Status:</label>
-        <input type="text" id="status" name="status" th:value="${ordemServico.status}" required>
-        <br>
-        <button type="submit">Salvar Alterações</button>
-        <button type="button" onclick="window.location.href='/ordens-de-servico/listar'">Cancelar</button>
+        <input type="text" id="descricao" name="descricao" th:value="${ordemDeServico.descricao}" required>
+      </div>
+
+      <div>
+        <label for="clienteId">Cliente:</label>
+        <select id="clienteId" name="clienteId" required>
+          <option value="">Selecione um cliente</option>
+          <option th:each="cliente : ${clientes}"
+                  th:value="${cliente.id}"
+                  th:text="${cliente.nome}"
+                  th:selected="${cliente.id == ordemDeServico.cliente.id}">
+          </option>
+        </select>
+      </div>
+
+      <div>
+    </select>
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+        <option value="">Selecione...</option>
+        <option value="PENDENTE">Pendente</option>
+        <option value="EM_ANDAMENTO">Em andamento</option>
+        <option value="CONCLUIDO">Concluído</option>
+    </select>
+      </div>
+
+      <div>
+        <label for="valorTotal">Valor Total:</label>
+        <input type="text" id="valorTotal" name="valorTotal" th:value="${ordemDeServico.valorTotal}" required>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" class="btn-submit">Salvar Alterações</button>
+        <button type="button" class="btn-cancel" onclick="window.location.href='/ordens-de-servico/listar'">Cancelar</button>
+      </div>
     </form>
+  </div>
 </body>
 </html>

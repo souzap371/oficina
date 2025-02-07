@@ -75,6 +75,14 @@ public String salvarOrdemDeServico(@RequestParam("clienteId") Long clienteId,
     }
 }
 
+
+    @GetMapping("/cancelar")
+    public String cancelarCriacao() {
+        return "redirect:/ordens-de-servico/listar";
+    }
+
+
+
     
 
 @GetMapping("/editar/{id}")

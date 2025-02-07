@@ -111,7 +111,7 @@
             <tbody>
                 <tr th:each="ordemServico : ${ordensServico}">
                     <td th:text="${ordemServico.id}"></td>
-                    <td th:text="${ordemServico.cliente}"></td>
+                    <td th:text="${ordemServico.cliente.nome}"></td>
                     <td th:text="${ordemServico.descricao}"></td>
                     <td th:text="${ordemServico.status}"></td>
                     <td th:text="${#numbers.formatDecimal(ordemServico.valorTotal, 1, 2)}"></td>
