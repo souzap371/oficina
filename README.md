@@ -13,7 +13,7 @@
 
 - GESTÃO FINANCEIRA:
    - Cadastro de Receitas e Despesas – Registrar todas as entradas e saídas financeiras = OK;
-   - Excluir Receitas e Despesas – Excluir entradas e saídas financeiras = DEV;
+   - Excluir Receitas e Despesas – Excluir entradas e saídas financeiras = OK;
    - Geração de Relatórios Financeiros – Demonstrativos de fluxo de caixa e balanço financeiro = FILA;
    - Controle de Pagamentos – Controle de contas a pagar e receber, com status de pagamento = FILA;
    - Dashboard Financeiro – Exibição gráfica de receitas, despesas e saldo atual = FILA;

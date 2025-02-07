@@ -1,48 +1,11 @@
-// package com.oficina.oficina.controller;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Controller;
-// import org.springframework.ui.Model;
-// import org.springframework.web.bind.annotation.*;
-// import com.oficina.oficina.model.Financeiro;
-// import com.oficina.oficina.service.FinanceiroService;
-
-// @Controller
-// @RequestMapping("/financeiro")
-// public class FinanceiroController {
-
-//     @Autowired
-//     private FinanceiroService financeiroService;
-
-//     @GetMapping("/listar")
-//     public String listar(Model model) {
-//         model.addAttribute("transacoes", financeiroService.listarTodos());
-//         return "listarFinan";
-//     }
-
-//     @GetMapping("/novo")
-//     public String novo(Model model) {
-//         model.addAttribute("financeiro", new Financeiro());
-//         return "formFinan";
-//     }
-
-//     @PostMapping("/salvar")
-//     public String salvar(@ModelAttribute Financeiro financeiro) {
-//         financeiroService.salvar(financeiro);
-//         return "redirect:/financeiro/listar";
-//     }
-
-//     @GetMapping("/excluir/{id}")
-//     public String excluir(@PathVariable Long id) {
-//         financeiroService.excluir(id);
-//         return "redirect:/financeiro/listar";
-//     }
-// }
-
 package com.oficina.oficina.controller;
 
 import com.oficina.oficina.model.Financeiro;
 import com.oficina.oficina.service.FinanceiroService;
 import lombok.AllArgsConstructor;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -62,6 +25,7 @@ public class FinanceiroController {
         return "listarFinan";
     }
 
+    
     @GetMapping("/novo")
     public String novo(Model model) {
         model.addAttribute("financeiro", new Financeiro());
@@ -85,4 +49,22 @@ public class FinanceiroController {
     //     financeiroService.excluir(id);
     //     return "redirect:/financeiro/listar";
     // }
+    //   @GetMapping("excluir/{id}")
+    //     public ResponseEntity<String> excluir(@PathVariable Long id) {
+    //         if (!financeiroService.existePorId(id)) {
+    //             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Transação não encontrada");
+    //         }
+    //         financeiroService.excluir(id);
+    //         return ResponseEntity.ok("redirect:/financeiro/listar");
+    // }
+
+    @GetMapping("excluir/{id}")
+public String excluir(@PathVariable Long id) {
+    if (!financeiroService.existePorId(id)) {
+        return "erro"; // Retorne uma página de erro se necessário
+    }
+    financeiroService.excluir(id);
+    return "redirect:/financeiro/listar";
+}
+
 }

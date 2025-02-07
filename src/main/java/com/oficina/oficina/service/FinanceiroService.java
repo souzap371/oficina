@@ -53,6 +53,9 @@ public class FinanceiroService {
     public void excluir(Long id) {
         financeiroRepository.deleteById(id);
     }
+    public boolean existePorId(Long id) {
+        return financeiroRepository.existsById(id);
+    }
 
     public double calcularTotalReceita() {
         return financeiroRepository.findAll().stream()
@@ -66,5 +69,8 @@ public class FinanceiroService {
                 .filter(financeiro -> "DESPESA".equals(financeiro.getTipoMovimento()))
                 .mapToDouble(Financeiro::getValor)
                 .sum();
+    }
+    public double calcularValorLiquido() {
+        return calcularTotalReceita() - calcularTotalDespesa();
     }
 }
