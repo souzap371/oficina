@@ -1,5 +1,7 @@
 # oficina
 
+Acesso local = https://localhost:8080
+
 
 - CLIENTES:
    - CADASTRO = OK;

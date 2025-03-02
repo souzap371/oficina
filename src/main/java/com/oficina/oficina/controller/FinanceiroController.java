@@ -22,8 +22,10 @@ public class FinanceiroController {
         model.addAttribute("transacoes", financeiroService.listarTodos());
         model.addAttribute("totalReceita", financeiroService.calcularTotalReceita());
         model.addAttribute("totalDespesa", financeiroService.calcularTotalDespesa());
+        model.addAttribute("valorLiquido", financeiroService.calcularValorLiquido()); // Adicionando valor líquido
         return "listarFinan";
     }
+    
 
     
     @GetMapping("/novo")

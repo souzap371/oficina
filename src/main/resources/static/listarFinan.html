@@ -108,6 +108,7 @@
 
     <div class="container">
         <a href="/financeiro/novo" class="btn">Nova Transação</a>
+        <button onclick="window.location.href='/'" style="background-color: #28a745;">Voltar</button>
 
         <div th:if="${param.erro}" class="erro">
             <p th:if="${param.erro[0] == 'descricao_invalida'}">Erro: A descrição não pode estar vazia.</p>
@@ -135,9 +136,9 @@
         </table>
 
         <div class="totais">
-            <p>Total Receita: <span th:text="${totalReceita}"></span></p>
-            <p>Total Despesa: <span th:text="${totalDespesa}"></span></p>
-            <p>Valor Líquido: <span th:text="${(totalReceita ?: 0) - (totalDespesa ?: 0)}"></span></p>
+            <p>Total Receita: <span th:text="${totalReceita} ?: '0.0'"></span></p>
+            <p>Total Despesa: <span th:text="${totalDespesa} ?: '0.0'"></span></p>
+            <p>Valor Líquido: <span th:text="${valorLiquido} ?: '0.0'"></span></p>
         </div>
     </div>
 
